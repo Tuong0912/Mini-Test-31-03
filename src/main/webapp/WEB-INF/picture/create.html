@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<p><a th:href="@{/picture}">Back list</a></p>
+<form th:object="${picture}" action="/picture/create" method="post" >
+  <table>
+    <tr>
+      <td>Picture Code</td>
+      <td><input type="text" th:field="*{pictureCode}"></td>
+    </tr>
+    <tr><td>Height</td><td><input type="text" th:field="*{height}"></td></tr><tr>
+    <td>Width</td><td><input type="text" th:field="*{width}"></td></tr>
+    <tr>
+      <td>Type</td>
+      <td><input type="text" th:field="*{type}"></td>
+    </tr>
+    <tr>
+      <td>Note</td>
+      <td><input type="text" th:field="*{note}"></td>
+    </tr>
+    <tr>
+      <td>Price</td>
+      <td><input type="text" th:field="*{price}"></td>
+    </tr>
+    <tr>
+      <td>Category</td>
+      <td><select th:field="*{category}">
+        <option th:each="c : ${categories}" th:value="${c.id}" th:text="${c.getName()}"></option>
+      </select></td>
+    </tr>
+    <tr>
+      <td><input type="submit" value="ADD"></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<p><a th:href="@{/picture/createForm}">Create new Picture</a></p>
+
+
+<table>
+  <tr>
+    <td>
+      <p>Search Picture by PictureCode</p>
+      <form th:action="@{picture/search}" method="get">
+        <input type="text" name="pictureCode">
+        <input type="submit" value="search">
+      </form>
+    </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>
+      <p>Search Picture by Category</p>
+      <form th:action="@{picture/searchCate}" method="get">
+        <input type="text" name="category">
+        <input type="submit" value="search">
+      </form>
+    </td>
+  </tr>
+</table>
+
+
+
+
+<h1>Picture</h1>
+<table border="1">
+  <tr>
+    <td>Picture Code</td>
+    <td>Height</td>
+    <td>Width</td>
+    <td>Type</td>
+    <td>Note</td>
+    <td>Price</td>
+    <td>Category</td>
+  </tr>
+  <tr th:each="p : ${pictures}">
+    <td th:text="${p.pictureCode}"></td>
+    <td th:text="${p.height}"></td>
+    <td th:text="${p.width}"></td>
+    <td th:text="${p.type}"></td>
+    <td th:text="${p.note}"></td>
+    <td th:text="${p.price}"></td>
+    <td th:text="${p.category.name}"></td>
+
+  </tr>
+</table>
+
+<h1>Category</h1>
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Edit</th>
+  </tr>
+  <tr th:each="c : ${categories}">
+    <td th:text="${c.id}"></td>
+    <td th:text="${c.name}"></td>
+  </tr>
+</table>
+</body>
+</html>
